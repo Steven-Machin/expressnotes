@@ -81,7 +81,7 @@ const handleNoteSave = async () => {
     title: noteTitle.value,
     text: noteText.value,
   };
-  
+
   try {
     await saveNote(newNote);
     await getAndRenderNotes();
@@ -134,12 +134,14 @@ const handleRenderSaveBtn = () => {
 
 const renderNoteList = async (notes) => {
   try {
+    const listContainer = noteList[0];
+
     if (notes.length === 0) {
-      noteList[0].innerHTML = '<li class="list-group-item">No saved Notes</li>';
+      listContainer.innerHTML = '<li class="list-group-item">No saved Notes</li>';
       return;
     }
 
-    noteList[0].innerHTML = notes.map((note) => {
+    listContainer.innerHTML = notes.map((note) => {
       const li = document.createElement('li');
       li.classList.add('list-group-item');
 
@@ -176,6 +178,7 @@ const getAndRenderNotes = async () => {
     const notes = await getNotes();
     await renderNoteList(notes);
   } catch (error) {
+    console.error('Error getting and rendering notes:', error);
   }
 };
 

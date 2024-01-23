@@ -27,7 +27,7 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
   const newNote = req.body;
-  newNote.id = uuid.v4();9
+  newNote.id = uuid.v4();
 
   const notes = JSON.parse(fs.readFileSync(dbFilePath, 'utf8'));
   notes.push(newNote);
