@@ -176,7 +176,6 @@ const getAndRenderNotes = async () => {
     const notes = await getNotes();
     await renderNoteList(notes);
   } catch (error) {
-    console.error('Error getting and rendering notes:', error);
   }
 };
 
